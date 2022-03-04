@@ -108,9 +108,9 @@ This will build a Linux executable called `main` in the `bin` directory.  The CX
 ## Implementation steps
 
 1. [Clone the GitHub repository](#clone-the-github-repository "Goes to the Clone the GitHub repository section")
-2. [Setup your AWS and Genesys Cloud Credentials](#train-and-deploy-the-amazon-comprehend-machine-learning-classifier "Goes to the Setup your AWS and Genesys Cloud Credentials")
+2. [Setup your AWS and Genesys Cloud Credentials](#setup-your-aws-and-genesys-cloud-credentials "Goes to the Setup your AWS and Genesys Cloud Credentials section")
 3. [Configure your Terraform build ](#configure-your-terraform-build "Goes to the Configure your Terraform build")
-4. [Run Terraform](#define-the-terraform-cloud-configuration "Goes to the Define the Terraform Cloud configuration section")
+4. [Run Terraform](#run-terraform "Goes to the Run Terraform section")
 5. [Test the deployment](#test-the-deployment "Goes to the Test the deployment section")
 
 ### Clone the GitHub repository
