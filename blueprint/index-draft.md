@@ -198,9 +198,9 @@ If you get a message back from your chatbot that there was a problem with your o
 
   
 ## Additional resources
-* [Genesys Cloud Web Messaging](/api/digital/ "Opens the web messaging documentation") in the Genesys Cloud Developer Center.
+* [Genesys Cloud Web Messaging](/api/digital/webmessaging "Opens the web messaging documentation") in the Genesys Cloud Developer Center.
 * [Genesys Cloud Data Actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the Data Actions integrations article") in the Genesys Cloud Resource Center
 * [Genesys Cloud Data Actions/lambda integrations](https://help.mypurecloud.com/articles/about-the-aws-lambda-data-actions-integration/ "Opens the Data Actions/lambda integrations article") in the Genesys Cloud Resource Center.
 * [Terraform Registry Documentation](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs "Opens the Genesys Cloud provider page") in the Terraform documentation
 * [Genesys Cloud DevOps Repository](https://github.com/GenesysCloudDevOps) Opens the Genesys Cloud DevOps Github. 
-* [deploy-webmessaging-chatbot-with-lambda-blueprint Private repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Goes to the deploy-webmessaging-with-lambda-blueprint repository") in Github.
+* [deploy-webmessaging-chatbot-with-lambda-blueprint repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Goes to the deploy-webmessaging-chatbot-with-lambda-blueprint repository") in Github.
