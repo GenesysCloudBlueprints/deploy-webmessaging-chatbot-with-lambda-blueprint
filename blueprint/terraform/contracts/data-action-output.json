@@ -1,0 +1,22 @@
+{
+  "title": "OrderResponse",
+  "type": "object",
+  "properties": {
+    "CustomerId": {
+      "type": "string"
+    },
+    "CustomerFirstName": {
+      "type": "string"
+    },
+    "CustomerLastName": {
+      "type": "string"
+    },
+    "OrderNumber": {
+      "type": "string"
+    },
+    "OrderStatus": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

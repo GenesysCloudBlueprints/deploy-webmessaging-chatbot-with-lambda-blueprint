@@ -1,0 +1,23 @@
+<html>
+<header>
+  <script type="text/javascript" charset="utf-8">
+    (function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] || function () {
+        (g[e].q = g[e].q || []).push(arguments)
+      };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+    })(window, 'Genesys', '${genesyscloud_scripting_url}/genesys-bootstrap/genesys.min.js', {
+      environment: '${genesyscloud_scripting_env}',
+      deploymentId: '${genesyscloud_webmessaging_deploymentid}'
+    });
+  </script>
+</header>
+
+<body>
+  <H1>My example web messaging page</H1>
+</body>
+
+</html>

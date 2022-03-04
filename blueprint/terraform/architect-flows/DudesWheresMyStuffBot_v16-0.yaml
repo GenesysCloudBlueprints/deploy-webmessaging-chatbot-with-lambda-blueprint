@@ -1,0 +1,265 @@
+botFlow:
+  name: DudesWheresMyStuffBot
+  startUpRef: "/botFlow/bots/bot[WheresMyStuffBot_10]"
+  defaultLanguage: en-us
+  supportedLanguages:
+    en-us:
+      none: true
+  variables:
+    - stringVariable:
+        name: Slot.OrderNumberType
+        initialValue:
+          noValue: true
+        isInput: true
+        isOutput: true
+  settingsActionDefaults:
+    askForIntent:
+      voiceEndOfInputTimeout:
+        lit:
+          seconds: 1
+    askForBoolean:
+      voiceEndOfInputTimeout:
+        lit:
+          seconds: 1
+    askForSlot:
+      voiceEndOfInputTimeout:
+        lit:
+          seconds: 1
+    loopAnythingElse:
+      voiceEndOfInputTimeout:
+        lit:
+          seconds: 1
+  settingsErrorHandling:
+    errorHandling:
+      exit:
+        none: true
+    enableAgentEscalation:
+      lit: true
+    errorEventHandover:
+      exp: "MakeCommunication(\n  \"Sorry, an error occurred. One moment, please, while I put you through to someone who can help.\")"
+    agentEscalationConfirmation:
+      exp: "MakeCommunication(\n  \"You want to speak to an agent. Is that correct?\")"
+    agentEscalationHandover:
+      exp: "MakeCommunication(\n  \"One moment, please, and I will put you through to someone.\")"
+    recognitionFailureEventHandover:
+      exp: "MakeCommunication(\n  \"Sorry, I'm having trouble understanding you. One moment, please, while I put you through to someone who can help.\")"
+    recognitionFailureEventHandling:
+      exit:
+        none: true
+  settingsBotFlow:
+    intentSettings:
+      - intent:
+          confirmation:
+            exp: "MakeCommunication(\n  \"I think you want to Cancel my order, is that correct?\")"
+          name: Cancel my order
+      - intent:
+          confirmation:
+            exp: "MakeCommunication(\n  \"I think you want to Check Order Status, is that correct?\")"
+          name: Check Order Status
+      - intent:
+          confirmation:
+            exp: "MakeCommunication(\n  \"I think you want to Order Questions, is that correct?\")"
+          name: Order Questions
+  settingsUserInput:
+    enableBargeIn:
+      lit: true
+    enableAutomaticQuickReplies:
+      lit: true
+    noMatchesMax:
+      lit: 3
+    noInputsMax:
+      lit: 3
+    noInputsTimeout:
+      lit:
+        seconds: 7
+    confirmationRejectionsMax:
+      lit: 3
+    collectionLowConfidenceThreshold:
+      lit: 20
+    collectionHighConfidenceThreshold:
+      lit: 70
+    confirmationLowConfidenceThreshold:
+      lit: 40
+    noMatchApology:
+      exp: "MakeCommunication(\n  \"Sorry.\")"
+    noInputApology:
+      exp: "MakeCommunication(\n  \"Sorry, I didn't hear you.\")"
+    noToConfirmationApology:
+      exp: "MakeCommunication(\n  \"My mistake.\")"
+    confirmationNoMatchApology:
+      exp: "MakeCommunication(\n  \"Sorry, please say yes or no.\")"
+    confirmationNoInputApology:
+      exp: "MakeCommunication(\n  \"Sorry, I didn't hear you.  Please say yes or no.\")"
+  settingsKnowledge:
+    none: true
+  bots:
+    - bot:
+        name: WheresMyStuffBot
+        refId: WheresMyStuffBot_10
+        actions:
+          - askForIntent:
+              name: Ask for Intent
+              question:
+                exp: "MakeCommunication(\n  \"How can I help you with your order today?\")"
+              noInput:
+                exp: "MakeCommunication(\n  \"Just speak a short sentence that describes your query. For example, \\\"Check my order status or cancel my order\\\"\")"
+              noMatch:
+                exp: "MakeCommunication(\n  \"Tell me again what you would like to do.\")"
+              voiceEndOfInputTimeout:
+                noValue: true
+              outputs:
+                intents:
+                  - intent:
+                      name: Cancel my order
+                      actions:
+                        - askForSlot:
+                            name: Ask for a order number
+                            slot:
+                              name: OrderNumberType
+                            question:
+                              exp: "MakeCommunication(\n  \"Sure, please provide me with your 8 digit order number?\")"
+                            customValidation:
+                              noValue: true
+                            confirmationMode:
+                              lit: never
+                            noInput:
+                              exp: "MakeCommunication(\n  \"Please say or enter your name here?\")"
+                            noMatch:
+                              exp: "MakeCommunication(\n  \"Please give me with your 8 digit order number again.\")"
+                            voiceEndOfInputTimeout:
+                              noValue: true
+                      enabled: true
+                  - intent:
+                      name: Check Order Status
+                      actions:
+                        - askForSlot:
+                            name: Ask for a order number
+                            slot:
+                              name: OrderNumberType
+                            question:
+                              exp: "MakeCommunication(\n  \"Sure, please provide me your 8 digit order number?\")"
+                            customValidation:
+                              noValue: true
+                            confirmationMode:
+                              lit: never
+                            noInput:
+                              exp: "MakeCommunication(\n  \"Please say or enter your order number here?\")"
+                            noMatch:
+                              exp: "MakeCommunication(\n  \"Please provide me with your 8 digit order number again.\")"
+                            voiceEndOfInputTimeout:
+                              noValue: true
+                      enabled: true
+                  - intent:
+                      name: Order Questions
+                      actions:
+                        - askForSlot:
+                            name: Ask for a order number
+                            slot:
+                              name: OrderNumberType
+                            question:
+                              exp: "MakeCommunication(\n  \"Sure, please provide me with your 8 digit order number?\")"
+                            customValidation:
+                              noValue: true
+                            confirmationMode:
+                              lit: never
+                            noInput:
+                              exp: "MakeCommunication(\n  \"Please say or enter the order number here?\")"
+                            noMatch:
+                              exp: "MakeCommunication(\n  \"Please provide me with your 8 digit order number again.\")"
+                            voiceEndOfInputTimeout:
+                              noValue: true
+                      enabled: true
+                noIntent:
+                  actions:
+                    - communicate:
+                        name: Communicate
+                        communication:
+                          exp: "MakeCommunication(\n  \"I am not sure what you are asking for.  Someone will be with you in a moment\")"
+          - exitBotFlow:
+              name: Exit Bot Flow
+  settingsNaturalLanguageUnderstanding:
+    nluDomainVersion:
+      intents:
+        - utterances:
+            - segments:
+                - text: "Cancel my order.  My order number is "
+                - text: "87654321"
+                  entity:
+                    name: OrderNumberType
+            - segments:
+                - text: I dont want this
+            - segments:
+                - text: Cancel order
+            - segments:
+                - text: Cancel my order
+          entityNameReferences:
+            - OrderNumberType
+          name: Cancel my order
+        - utterances:
+            - segments:
+                - text: "My order number is "
+                - text: "87654321"
+                  entity:
+                    name: OrderNumberType
+                - text: ".  Where is my order"
+            - segments:
+                - text: Order has not arrived
+            - segments:
+                - text: Status
+            - segments:
+                - text: Where's my stuff?
+            - segments:
+                - text: Order status
+            - segments:
+                - text: "Whats the status of my order? My order number is "
+                - text: "87654321 "
+                  entity:
+                    name: OrderNumberType
+          entityNameReferences:
+            - OrderNumberType
+          name: Check Order Status
+        - utterances:
+            - segments:
+                - text: Operator
+            - segments:
+                - text: Help
+            - segments:
+                - text: I want to speak to an agent
+            - segments:
+                - text: "Can you help me with a question about my order. My order number is "
+                - text: "87654321"
+                  entity:
+                    name: OrderNumberType
+            - segments:
+                - text: Order inquiry
+            - segments:
+                - text: Order question
+            - segments:
+                - text: Question about my order
+            - segments:
+                - text: "I have an inquiry about my order.  My order number is "
+                - text: "87654321"
+                  entity:
+                    name: OrderNumberType
+            - segments:
+                - text: Can you help me with a question about my order
+            - segments:
+                - text: I need some help with my order
+            - segments:
+                - text: I have a question about my order
+          entityNameReferences:
+            - OrderNumberType
+          name: Order Questions
+      entities:
+        - name: OrderNumberType
+          type: "*.OrderNumberType"
+      entityTypes:
+        - name: "*.OrderNumberType"
+          description: The description of the Entity Type "*.OrderNumberType"
+          mechanism:
+            type: Regex
+            restricted: true
+            items:
+              - value: "\\b[0-9]{8}\\b"
+                synonyms: []
+      language: en

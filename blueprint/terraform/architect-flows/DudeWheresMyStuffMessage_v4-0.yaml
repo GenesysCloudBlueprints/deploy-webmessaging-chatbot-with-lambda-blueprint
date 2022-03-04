@@ -1,0 +1,256 @@
+inboundShortMessage:
+  name: DudeWheresMyStuffMessage
+  description: Message Based Chat Flow
+  startUpRef: "/inboundShortMessage/states/state[Initial State_10]"
+  defaultLanguage: en-us
+  supportedLanguages:
+    en-us:
+      defaultLanguageSkill:
+        noValue: true
+  settingsErrorHandling:
+    errorHandling:
+      disconnect:
+        none: true
+  states:
+    - state:
+        name: Initial State
+        refId: Initial State_10
+        variables:
+          - stringVariable:
+              name: State.ChatFirstName
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.CustomerFirstName
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.CustomerId
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.CustomerLastName
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.OrderNumber
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.OrderStatus
+              initialValue:
+                noValue: true
+          - stringVariable:
+              name: State.TheIntent
+              initialValue:
+                noValue: true
+        actions:
+          - callBotFlow:
+              name: Call Bot Flow
+              inputText:
+                noValue: true
+              exitReason:
+                noValue: true
+              intent:
+                var: State.TheIntent
+              botFlow:
+                DudesWheresMyStuffBot:
+                  ver_latestPublished:
+                    inputs:
+                      Slot.OrderNumberType:
+                        noValue: true
+                    outputs:
+                      Slot.OrderNumberType:
+                        var: State.OrderNumber
+          - getParticipantData:
+              name: Get Participant Data
+              attributes:
+                - attribute:
+                    name:
+                      lit: Context.CustomerFirstName
+                    variable: State.ChatFirstName
+          - switch:
+              name: Switch
+              evaluate:
+                firstTrue:
+                  default:
+                    actions:
+                      - transferToAcd:
+                          name: Transfer to ACD
+                          targetQueue:
+                            lit:
+                              name: dude-general-support
+                          priority:
+                            lit: 0
+                          preferredAgents:
+                            noValue: true
+                          languageSkill:
+                            noValue: true
+                  cases:
+                    - case:
+                        value:
+                          exp: State.TheIntent=="Check Order Status"
+                        actions:
+                          - callData:
+                              name: Call Data Action
+                              timeout:
+                                lit:
+                                  minutes: 1
+                              category:
+                                dev-dude-order-status-Lambda:
+                                  dataAction:
+                                    dev-dude-order-status-data-action:
+                                      inputs:
+                                        OrderNumber:
+                                          exp: State.OrderNumber
+                                      successOutputs:
+                                        CustomerFirstName:
+                                          var: State.CustomerFirstName
+                                        CustomerId:
+                                          var: State.CustomerId
+                                        CustomerLastName:
+                                          var: State.CustomerLastName
+                                        OrderNumber:
+                                          var: State.OrderNumber
+                                        OrderStatus:
+                                          var: State.OrderStatus
+                                      failureOutputs:
+                                        errorCode:
+                                          noValue: true
+                                        status:
+                                          noValue: true
+                                        correlationId:
+                                          noValue: true
+                                        entityId:
+                                          noValue: true
+                                        entityName:
+                                          noValue: true
+                                        userMessage:
+                                          noValue: true
+                                        userParamsMessage:
+                                          noValue: true
+                                        userParams.key:
+                                          noValue: true
+                                        userParams.value:
+                                          noValue: true
+                                        details.errorCode:
+                                          noValue: true
+                                        details.fieldName:
+                                          noValue: true
+                                        details.entityId:
+                                          noValue: true
+                                        details.entityName:
+                                          noValue: true
+                              outputs:
+                                success:
+                                  actions:
+                                    - setParticipantData:
+                                        name: Set Participant Data
+                                        attributes:
+                                          - attribute:
+                                              name:
+                                                lit: OrderNumber
+                                              value:
+                                                exp: State.OrderNumber
+                                    - sendResponse:
+                                        name: Send Response
+                                        messageBody:
+                                          exp: "Trim(Append(\n    ToDisplayString(Append(\"Hi \", State.ChatFirstName, \", \")), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"Hi \", State.ChatFirstName, \", \"))), \"\", \" \"), \n    ToDisplayString(Append(\"Thanks for reaching out to us about order #: \", State.OrderNumber)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"Thanks for reaching out to us about order #: \", State.OrderNumber))), \"\", \" \"), \n    ToDisplayString(Append(\"The status of the order is \", State.OrderStatus))))"
+                                failure:
+                                  actions:
+                                    - setParticipantData:
+                                        name: Set Participant Data
+                                        attributes:
+                                          - attribute:
+                                              name:
+                                                lit: OrderNumber
+                                              value:
+                                                exp: State.OrderNumber
+                                    - sendResponse:
+                                        name: Send Response
+                                        messageBody:
+                                          exp: "Trim(Append(\n    ToDisplayString(Append(\"Hi \", State.ChatFirstName)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"Hi \", State.ChatFirstName))), \"\", \" \"), \n    ToDisplayString(Append(\"We had some trouble looking up order #: \", State.OrderNumber)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"We had some trouble looking up order #: \", State.OrderNumber))), \"\", \" \"), \n    \"Sit tight, while I get an agent who can help with this situation.\"))"
+                                    - transferToAcd:
+                                        name: Transfer to ACD
+                                        targetQueue:
+                                          lit:
+                                            name: dude-general-support
+                                        priority:
+                                          lit: 0
+                                        preferredAgents:
+                                          noValue: true
+                                        languageSkill:
+                                          noValue: true
+                                timeout:
+                                  actions:
+                                    - sendResponse:
+                                        name: Send Response
+                                        messageBody:
+                                          exp: "Trim(Append(\n    ToDisplayString(Append(\"Hi \", State.ChatFirstName, \"We had problems looking up order number: \", State.OrderNumber)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"Hi \", State.ChatFirstName, \"We had problems looking up order number: \", State.OrderNumber))), \"\", \" \"), \n    \"Please sit tight and I am getting an agent to help sort this out.\"))"
+                                    - setParticipantData:
+                                        name: Set Participant Data
+                                        attributes:
+                                          - attribute:
+                                              name:
+                                                lit: OrderNumber
+                                              value:
+                                                exp: State.OrderNumber
+                                    - transferToAcd:
+                                        name: Transfer to ACD
+                                        targetQueue:
+                                          lit:
+                                            name: dude-general-support
+                                        priority:
+                                          lit: 0
+                                        preferredAgents:
+                                          noValue: true
+                                        languageSkill:
+                                          noValue: true
+                    - case:
+                        value:
+                          exp: State.TheIntent=="Cancel my order"
+                        actions:
+                          - sendResponse:
+                              name: Send Response
+                              messageBody:
+                                exp: "Trim(Append(\n    ToDisplayString(Append(\"Hi \", State.ChatFirstName)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"Hi \", State.ChatFirstName))), \"\", \" \"), \n    ToDisplayString(Append(\"I am sorry you want to cancel order number #\", State.OrderNumber)), \n    If(IsNotSetOrEmpty(ToDisplayString(Append(\"I am sorry you want to cancel order number #\", State.OrderNumber))), \"\", \" \"), \n    \"Let me get you an agent to assist you with this right away.\"))"
+                          - setParticipantData:
+                              name: Set Participant Data
+                              attributes:
+                                - attribute:
+                                    name:
+                                      lit: OrderNumber
+                                    value:
+                                      exp: State.OrderNumber
+                          - transferToAcd:
+                              name: Transfer to ACD
+                              targetQueue:
+                                lit:
+                                  name: dude-general-support
+                              priority:
+                                lit: 0
+                              preferredAgents:
+                                noValue: true
+                              languageSkill:
+                                noValue: true
+                    - case:
+                        value:
+                          exp: State.TheIntent=="Order Questions"
+                        actions:
+                          - sendResponse:
+                              name: Send Response
+                              messageBody:
+                                lit: What is the sound of a server crashing?
+                          - transferToAcd:
+                              name: Transfer to ACD
+                              targetQueue:
+                                lit:
+                                  name: dude-general-support
+                              priority:
+                                lit: 0
+                              preferredAgents:
+                                noValue: true
+                              languageSkill:
+                                noValue: true
+          - disconnect:
+              name: Disconnect

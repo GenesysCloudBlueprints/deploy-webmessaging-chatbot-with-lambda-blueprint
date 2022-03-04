@@ -1,0 +1,10 @@
+{
+  "title" : "OrderRequest",
+  "type" : "object",
+  "properties" : {
+    "OrderNumber" : {
+      "type" : "string"
+    }
+  },
+  "additionalProperties" : true
+}
