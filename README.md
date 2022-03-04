@@ -6,8 +6,8 @@ This Genesys Cloud blueprint demonstrates how to build a Web Messaging-based cha
 
 This blueprint also demonstrates how to:
 
-* Build a bot Genesys Cloud Architect Flow that can be integrated with a Genesys Cloud Architect inbound message flow.
-* Built an inbound message Genesys Cloud Architect flow. 
+* Build a bot Genesys Cloud Architect flow that can be integrated with a Genesys Cloud Architect inbound message flow.
+* Build an inbound message Genesys Cloud Architect flow. 
 * Expose the the inbound message flow for consumption using a Genesys Cloud Web Messaging widget.
 * Integrate an AWS Lambda in the inbound message flow using a Genesys Cloud Data Action.
 * Deploy both the AWS Lambda, all AWS IAM roles and CX as Code components all from within a single Terraform/CX as Code project.
