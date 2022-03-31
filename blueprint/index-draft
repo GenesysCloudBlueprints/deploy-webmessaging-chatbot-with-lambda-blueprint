@@ -38,7 +38,7 @@ All the components used in this solution can be deployed using Terraform, the Te
 * **Archy** - A Genesys Cloud command-line tool for importing and exporting Architect flows.
 * **CX as Code** - A Genesys Cloud Terraform provider that provides an interface for declaring core Genesys Cloud objects.
 * **AWS Terraform Provider** - An Amazon supported Terraform provides an interface for declaring Amazon Web Services infrastructure.
-* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. See [AWS Lambda](https://aws.amazon.com/translate/ "Opens the Amazon AWS Lambda page") in the Amazon featured services website. 
+* **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. See [AWS Lambda](https://aws.amazon.com/translate/ "Goes to the Amazon AWS Lambda page") in the Amazon featured services website. 
 
  This Genesys Cloud Developer blueprint demonstrates how to build a chatbot using Genesys Cloud's Web Messaging capabilities. This blueprint also demonstrates how to set up and configure a Data Action invoking an AWS Lambda.
 
@@ -76,7 +76,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 
 * A Genesys Cloud license. For this project, you need at least a `Genesys Cloud Engage 3` and your organization's `botFlows` license. For more information, see [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") in the Genesys website.
 * Master Admin role. For more information, see [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article") in the Genesys Cloud Resource Center.
-* Archy. For more information, see [Welcome to Archy](/devapps/archy/ "Goes to the Welcome to Archy page").
+* Archy. For more information, see [Welcome to Archy](/devapps/archy/ "Opens the Welcome to Archy page").
 * CX as Code. For more information, see [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code page").
 
 ### AWS account
@@ -88,7 +88,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 
 ### Development tools running in your local environment
 * Terraform (the latest binary). For more information, see [Download Terraform](https://www.terraform.io/downloads.html "Opens the Download Terraform page") in the Terraform website.
-* Golang 1.16 or higher. For more information, see [Download Golang](https://go.dev/ "Opens the Golang website").  
+* Golang 1.16 or higher. For more information, see [Download Golang](https://go.dev/ "Goes to the Golang website").  
 * Archy (the latest version). Archy is Genesys Cloud's command-line to deploy Genesys Cloud Architect Flows. For more information, see the following resources for Archy:
   * [Archy Documentation](/devapps/archy/ "Archy Documentation")
   * [Installing and Configuring Archy - Video](https://www.youtube.com/watch?v=fOI_vq3PnM8 "Installing and configuring Archy")
@@ -105,7 +105,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 
 ### Clone the GitHub repository
 
-Clone the GitHub repository [deploy-chatbot-with-lambda-blueprint](https://github.com/GenesysCloudBlueprints/deploy-chatbot-with-lambda-blueprint "Opens the GitHub repository") to your local machine. The `deploy-chatbot-with-lambda-blueprint/blueprint` folder includes solution-specific scripts and files in these subfolders:
+Clone the GitHub repository [deploy-chatbot-with-lambda-blueprint](https://github.com/GenesysCloudBlueprints/deploy-chatbot-with-lambda-blueprint "Goes to the GitHub repository") to your local machine. The `deploy-chatbot-with-lambda-blueprint/blueprint` folder includes solution-specific scripts and files in these subfolders:
 * `lambda-orderstatus` - Source code for the example lambda used in this application.
 * `terraform` - All Terraform files and Architect flows to deploy the application.
 
@@ -184,9 +184,9 @@ If you followed the steps above, you should see something like:
 If you get a message back from your chatbot that there was a problem with your order, this means the AWS lambda did not deploy properly and Genesys Cloud had a problem invoking it.
   
 ## Additional resources
-* [Genesys Cloud Web Messaging](/api/digital/webmessaging "Opens the web messaging documentation") in the Genesys Cloud Developer Center.
+* [Genesys Cloud Web Messaging](/api/digital/webmessaging "Goes to the web messaging documentation") in the Genesys Cloud Developer Center.
 * [Genesys Cloud Data Actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the Data Actions integrations article") in the Genesys Cloud Resource Center
 * [Genesys Cloud Data Actions/lambda integrations](https://help.mypurecloud.com/articles/about-the-aws-lambda-data-actions-integration/ "Opens the Data Actions/lambda integrations article") in the Genesys Cloud Resource Center.
 * [Terraform Registry Documentation](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs "Opens the Genesys Cloud provider page") in the Terraform documentation
-* [Genesys Cloud DevOps Repository](https://github.com/GenesysCloudDevOps) Opens the Genesys Cloud DevOps Github. 
-* [deploy-webmessaging-chatbot-with-lambda-blueprint repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Goes to the deploy-webmessaging-chatbot-with-lambda-blueprint repository") in Github.
+* [Genesys Cloud DevOps Repository](https://github.com/GenesysCloudDevOps "Goes to the Genesys Cloud DevOps Github"). 
+* [deploy-webmessaging-chatbot-with-lambda-blueprint repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Opens the deploy-webmessaging-chatbot-with-lambda-blueprint repository") in Github.
