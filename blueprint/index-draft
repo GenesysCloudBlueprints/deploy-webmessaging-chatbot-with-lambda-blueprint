@@ -13,7 +13,7 @@ This Genesys Cloud Developer blueprint demonstrates how to build a chatbot using
 
 ## Scenario
 
-An organization is interested in building a service chatbot that allows customers to find out the status of their orders. The goal of this chatbot is to:
+An organization is interested in building a service chatbot that allows customers to find out the status of their orders. The goal is to:
 
 * **Implement a chatbot that can be used across multiple contact center channels.** The development team wants to quickly stand up a bot flow that can be used to process inbound chats. However, they want to leverage this flow in a non-channel-specific way to integrate it with a voice channel in the future.
 
@@ -46,7 +46,7 @@ All the components used in this solution can be deployed using Terraform, the Te
 
 There are no required SDKs needed for this project. This project contains everything you need to deploy the blueprint, including a pre-compiled version of the AWS lambda. 
 
-If you wish to change the AWS lambda, the source code can be found in the `lambda-orderstatus` directory. To build this lambda, you will need the Golang SDK. The latest Golang version of Golang can be found [Go programming language](https://go.dev/ "Goes to the Go programming language page") on the Go website. To rebuild the lambda from the source code:
+If you wish to change the AWS lambda, the source code can be found in the `lambda-orderstatus` directory. To build this lambda, you will need the Golang SDK. For the latest Golang version, see [Go programming language](https://go.dev/ "Goes to the Go programming language page"), on the Go website. To rebuild the lambda from the source code:
 
 1. Have the Golang SDK installed on the machine.
 2. Change to the `blueprint/lambda-orderstatus directory.
@@ -130,7 +130,7 @@ The values that need to be set include:
 * `awsRegion` - The AWS region (e.g us-east-1, us-west-2) that you will deploy the target Lambda to.
 * `environment` - This is a free-form field that will be combined with the prefix value to define the name of various AWS and Genesys Cloud artifacts. For example, if you set the environment name to `dev` and the prefix to `dude-order-status` your AWS Lambda, IAM roles, Genesys Cloud Integration and Data Actions will all begin with `dev-dude-order-status`.
 * `prefix`- This is a free-form field that will be combined with the environment value to define the name of various AWS and Genesys Cloud artifacts.
-* `genesysCloudScriptUrl` - The Genesys Cloud apps URL specific to your organization's Amazon region. The complete list of regions can be found [Platform Overview Platform API](https://developer.genesys.cloud/platform/api/ "Opens the Platform Overview Platform API page"). This is used in generating the HTML page used to test the Web Component.
+* `genesysCloudScriptUrl` - The Genesys Cloud apps URL specific to your organization's Amazon region. For a complete list of regions, see [Platform Overview Platform API](https://developer.genesys.cloud/platform/api/ "Opens the Platform Overview Platform API page") in the Genesys Cloud Developer Center. This is used in generating the HTML page used to test the Web Component.
 * `genesysCloudScriptEnv` - A short code for the environment. This value can be found by looking at the value immediately following the `https://apps.<<VALUE HERE>>.pure.cloud` from the `genesysCloudScriptUrl`. For example, if your Genesys Cloud organization was located in us-west-2 its `genesysCloudScriptUrl` value would be `https://apps.usw2.pure.cloud`, and the `genesysCloudScriptUrl` would be `usw2`.
 
 Listed below is an example of the `dev.auto.tfvars` used by the author of this blueprint.
@@ -171,17 +171,17 @@ This will start a web server on port 2015. Ues your favorite web browser and go 
 
 ![Testing your deployed web messaging widget](images/webmessaging-start.png "Testing your deployed web messaging widget")
 
-Once the page loads completely you should see a small grey icon on the bottom right-side of the page. Click on it to begin your web messaging chat session. Then type anything in the chat window to initiate the conversation with the chatbot.
+Once the page loads, you should see a small grey icon on the bottom right side of the page. Click on it to start your web messaging chat session, then type anything in the chat window to initiate the chatbox conversation.
 
 ![Starting the Web Messaging session](images/webmessaging-inprogress.png "Starting the Web Messaging session")
 
-Once the web messaging session is started, a chatbot will great you, asking "`How can I help you with your order today?`". If you respond with the term `order status` and when prompted for your eight-digit order number, you enter `12345678`, you should see the response of `Hi, Thanks for reaching out to us about order #: 12345678. The status of the order is Shipped`. If you get this response, the chatbot has successfully hit the AWS lambda in question and successfully processed the requests for order status.
+Once the web messaging session is started, a chatbot will great you, asking "`How can I help you with your order today?`". If you respond with the term `order status` and when prompted for your eight-digit order number, you enter `12345678`, you should see the response of `Hi, Thanks for reaching out to us about order #: 12345678. The status of the order is Shipped`. If you receive this response, the chatbot has successfully hit the AWS lambda in question and successfully processed the requests for order status.
 
 If you followed the steps above, you should see something like:
 
 ![The full Web Messaging session](images/webmessaging-completion.png "The full Web Messaging session")
 
-If you get a message back from your chatbot that there was a problem with your order, this means the AWS lambda did not deploy properly and Genesys Cloud had a problem invoking it.
+If you receive a message from your chatbot that there was a problem with your order, the AWS lambda did not deploy properly, and Genesys Cloud had a problem invoking it.
   
 ## Additional resources
 * [Genesys Cloud Web messaging and Messenger](https://developer.genesys.cloud/commdigital/digital/webmessaging/ "Goes to the Web messaging and Messenger page") in the Genesys Cloud Developer Center.
