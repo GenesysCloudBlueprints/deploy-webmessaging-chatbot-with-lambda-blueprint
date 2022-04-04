@@ -17,7 +17,7 @@ An organization is interested in building a service chatbot that allows customer
 
 * **Implement a chatbot that can be used across multiple contact center channels.** The development team wants to quickly stand up a bot flow that can be used to process inbound chats. However, they want to leverage this flow in a non-channel-specific way to integrate it with a voice channel in the future.
 
-* **Implement a chatbot on their company website.** The company wants to be able to deliver the chatbot on their company website with minimal coding effort.
+* **Implement a chatbot on their company website.** The company wants to deliver the chatbot on their company website with minimal coding effort.
 
 * **Integrate their chatbot with an AWS lambda to look up the order status for a customer** The organization already has an AWS lambda that they use in other places for looking up customer order information. They want to reuse this lambda in their chatbot to speed overall delivery velocity and promote reuse.
 
@@ -46,7 +46,7 @@ All the components used in this solution can be deployed using Terraform, the Te
 
 There are no required SDKs needed for this project. This project contains everything you need to deploy the blueprint, including a pre-compiled version of the AWS lambda. 
 
-If you wish to change the AWS lambda, the source code can be found in the `lambda-orderstatus` directory. To build this lambda, you will need the Golang SDK. For the latest Golang version, see [Go programming language](https://go.dev/ "Goes to the Go programming language page"), on the Go website. To rebuild the lambda from the source code:
+If you wish to change the AWS lambda, the source code can be found in the `lambda-orderstatus` directory. To build this lambda, you will need the Golang SDK. For the latest Golang version, see [GO Downloads](https://go.dev/dl/ "Goes to the GO Downloads page"), on the Go website. To rebuild the lambda from the source code:
 
 1. Have the Golang SDK installed on the machine.
 2. Change to the `blueprint/lambda-orderstatus directory.
@@ -84,13 +84,13 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 * An administrator account with permissions to access these services:
   * AWS Identity and Access Management (IAM)
   * AWS Lambda
-  * AWS credentials. For more information about setting up your AWS credentials on your local machine, see [About credential providers](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Opens the About credential providers page") in AWS documentation.
+  * AWS credentials. For more information about setting up your AWS credentials on your local machine, see [Configuration](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Opens the Configuration page") in AWS documentation.
 
 ### Development tools running in your local environment
 * Terraform (the latest binary). For more information, see [Download Terraform](https://www.terraform.io/downloads.html "Opens the Download Terraform page") in the Terraform website.
-* Golang 1.16 or higher. For more information, see [Download Golang](https://go.dev/ "Goes to the Golang website").  
+* Golang 1.16 or higher. For more information, see [GO Download](https://go.dev/dl/ "Goes to the GO Download website").  
 * Archy (the latest version). Archy is Genesys Cloud's command-line to deploy Genesys Cloud Architect Flows. For more information, see these resources for Archy:
-  * [Archy Documentation](https://developer.genesys.cloud/devapps/archy/ "Archy Documentation")
+  * [Welcome Archy](https://developer.genesys.cloud/devapps/archy/ "Welcome Archy")
   * [Installing and Configuring Archy - Video](https://www.youtube.com/watch?v=fOI_vq3PnM8 "Installing and configuring Archy")
   * [Exporting flows with Archy - Video](https://www.youtube.com/watch?v=QAmkM_agsrY "Exporting flows with Archy")
   * [Importing flows with Archy - Video](https://www.youtube.com/watch?v=3NwGJ9X1O0s "Importing flows with Archy")
@@ -130,7 +130,7 @@ The values that need to be set include:
 * `awsRegion` - The AWS region (e.g us-east-1, us-west-2) that you will deploy the target Lambda to.
 * `environment` - This is a free-form field that will be combined with the prefix value to define the name of various AWS and Genesys Cloud artifacts. For example, if you set the environment name to `dev` and the prefix to `dude-order-status` your AWS Lambda, IAM roles, Genesys Cloud Integration and Data Actions will all begin with `dev-dude-order-status`.
 * `prefix`- This is a free-form field that will be combined with the environment value to define the name of various AWS and Genesys Cloud artifacts.
-* `genesysCloudScriptUrl` - The Genesys Cloud apps URL specific to your organization's Amazon region. For a complete list of regions, see [Platform Overview Platform API](https://developer.genesys.cloud/platform/api/ "Opens the Platform Overview Platform API page") in the Genesys Cloud Developer Center. This is used in generating the HTML page used to test the Web Component.
+* `genesysCloudScriptUrl` - The Genesys Cloud apps URL specific to your organization's Amazon region. For a complete list of regions, see [Platform API Overview](https://developer.genesys.cloud/platform/api/ "Opens the Platform API Overview page") in the Genesys Cloud Developer Center. This is used in generating the HTML page used to test the Web Component.
 * `genesysCloudScriptEnv` - A short code for the environment. This value can be found by looking at the value immediately following the `https://apps.<<VALUE HERE>>.pure.cloud` from the `genesysCloudScriptUrl`. For example, if your Genesys Cloud organization was located in us-west-2 its `genesysCloudScriptUrl` value would be `https://apps.usw2.pure.cloud`, and the `genesysCloudScriptUrl` would be `usw2`.
 
 Listed below is an example of the `dev.auto.tfvars` used by the author of this blueprint.
