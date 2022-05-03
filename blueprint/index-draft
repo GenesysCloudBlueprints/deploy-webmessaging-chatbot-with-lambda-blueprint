@@ -1,21 +1,21 @@
 ---
-title: Build a Web Messaging Chatbot calling an AWS Lambda via a Genesys Cloud Data Action
+title: Build a web messaging chat bot that calls an AWS Lambda via a Genesys Cloud data action
 author: john.carnell
 indextype: blueprint
 icon: blueprint
 image: images/overview.png
 category: 5
 summary: |
-This Genesys Cloud Developer blueprint demonstrates how to build a chatbot using Genesys Cloud's Web Messaging capabilities. This Blueprint also demonstrates how to setup and configure a Data Action invoking an AWS Lambda.
+This Genesys Cloud Developer Blueprint demonstrates how to build a chat bot that uses Genesys Cloud's web messaging capabilities. This blueprint also demonstrates how to set up and configure a data action that invokes an AWS Lambda.
 ---
 
-This Genesys Cloud Developer blueprint demonstrates how to build a chatbot using Genesys Cloud's Web Messaging capabilities. This Blueprint also demonstrates how to setup and configure a Data Action invoking an AWS Lambda.
+This Genesys Cloud Developer Blueprint demonstrates how to build a chat bot that uses Genesys Cloud's web messaging capabilities. This blueprint also demonstrates how to set up and configure a data action that invokes an AWS Lambda.
 
-![Build a Chatbot calling an AWS Lambda via a Genesys Cloud Data Action](images/overview.png "Build a Chatbot calling an AWS Lambda via a Genesys Cloud Data Action")
+![Build a chat bot calling an AWS Lambda via a Genesys Cloud Data Action](images/overview.png "Build a chat bot calling an AWS Lambda via a Genesys Cloud Data Action")
 
 ## Scenario
 
-An organization is interested in building a chatbot that allows customers to check the status of their orders. The goal is to:
+An organization is interested in building a chatbot that allows customers to check the status of their orders. Their goals are to:
 
 * Implement a chatbot across multiple contact center channels. Initially, the bot flow will process inbound chats. By designing the flow in a non-channel-specific way, the dev team will be able to integrate it with a voice channel later.
 
@@ -24,6 +24,7 @@ An organization is interested in building a chatbot that allows customers to che
 * Integrate a chatbot with an AWS Lambda to speed overall delivery and promote reuse.
 
 ## Solution
+
 This blueprint explains how to use the following Genesys Cloud capabilities: 
 
 1. **Bot Flow** - allows you to define the utterances and intents associated with speech and text detection in a chat or voice bot. 
@@ -38,7 +39,7 @@ Additionally, this blueprint explains how to deploy the AWS Lambda, all the AWS 
 * **Genesys Cloud CX** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use an Architect bot, Architect message flow, a Genesys Cloud integration, data action, queues, and a web messaging widget.
 * **Archy** - A Genesys Cloud command-line tool for importing and exporting Architect flows.
 * **CX as Code** - A Genesys Cloud Terraform provider that provides an interface for declaring core Genesys Cloud objects.
-* **AWS Terraform Provider** - An Amazon supported Terraform provides an interface for declaring Amazon Web Services infrastructure.
+* **AWS Terraform Provider** - An Amazon-supported Terrform provider that provides an interface for declaring Amazon Web Services infrastructure resources.
 * **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda looks up a customer's order status.
 
  ## Software development kits
@@ -66,7 +67,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 
 ### Genesys Cloud account
 
-* A Genesys Cloud license. For more information see, [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") in the Genesys website. For this project, you need at least a `Genesys Cloud Engage 3` and a `botFlows` product for your organization. 
+* A Genesys Cloud license. For more information see, [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") in the Genesys website. 
 * Master Admin role. For more information see, [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Goes to the Roles and permissions overview article") in the Genesys Cloud Resource Center.
 * Archy. For more information see, [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page") in the Genesys Cloud Developer Center.
 * CX as Code. For more information see, [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Goes to the CX as Code page") in the Genesys Cloud Developer Center.
@@ -81,7 +82,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 ### Development tools running in your local environment
 
 * Terraform (the latest binary). For more information, see [Download Terraform](https://www.terraform.io/downloads.html "Goes to the Download Terraform page") on the Terraform website.
-* Golang 1.16 or higher. For more information, see [Downloads](https://go.dev/dl/ "Goes to the Downloads page") on the GO website. 
+* Golang 1.16 or higher. For more information, see [Downloads](https://go.dev/dl/ "Goes to the Downloads page") on the Go website. 
 * Archy (the latest version). Archy is Genesys Cloud's command line to deploy Genesys Cloud Architect flows. For more information, see: 
 
   * [Archy Documentation](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page")
@@ -96,15 +97,15 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 Clone the [deploy-chatbot-with-lambda-blueprint](https://github.com/GenesysCloudBlueprints/deploy-chatbot-with-lambda-blueprint) GitHub repository on your local machine. The `deploy-chatbot-with-lambda-blueprint/blueprint` folder includes solution-specific scripts and files in these subfolders:
 
 * `lambda-orderstatus` - Source code for the AWS Lambda used in this application
-* `terraform` - All Terraform files and Architect flows form files and Architect flows
+* `terraform` - All Terraform files and Architect flows that are needed to deploy the solution.
 
-### Setup your AWS credentials
+### Set up your AWS credentials
 
-For information about setting up your AWS credentials on your local machine, see [Configuration](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Goes to the COnfiguration page") on the AWS website.
+For information about setting up your AWS credentials on your local machine, see [Configuration](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Goes to the Configuration page") on the AWS website.
 
 ### Set up your Genesys Cloud credentials
 
-1. To run this project using the AWS Terraform provider, open a terminal window and set the following environment variables:
+1. To run this project using the AWS Terraform provider, open a Terminal window and set the following environment variables:
 
  * `GENESYSCLOUD_OAUTHCLIENT_ID` - This is the Genesys Cloud client credential grant Id that CX as Code executes against. 
  * `GENESYSCLOUD_OAUTHCLIENT_SECRET` - This is the Genesys Cloud client credential secret that CX as Code executes against. 
@@ -112,7 +113,7 @@ For information about setting up your AWS credentials on your local machine, see
  * `AWS_ACCESS_KEY_ID` - This is the AWS Access Key you must set up in your Amazon account to allow the AWS Terraform provider to act against your account.
  * `AWS_SECRET_ACCESS_KEY` - This is the AWS Secret you must set up in your Amazon account to allow the AWS Terraform provider to act against your account.
 
-2. Run Terraform in the terminal window where the environment variables are set.
+2. Run Terraform in the Terminal window where you set the environment variables.
 
 :::primary
 **Note:** For this project, the Genesys Cloud OAuth client requires the Master Admin role. 
@@ -124,10 +125,7 @@ You must define several values that are specific to your AWS region and Genesys 
 
 In the blueprint/terraform/dev.auto.tfvars file, set the following values:
 
-
-The values that need to be set include:
-
-* `organizationId` - Your Genesys Cloud organization ID
+* `organizationId` - Your Genesys Cloud organization Id
 * `awsRegion` - The AWS region (for example us-east-1, us-west-2) where you are going to deploy the target AWS lambda.
 * `environment` - This is a free-form field that combines with the prefix value to define the name of various AWS and Genesys Cloud artifacts. For example, if you set the environment name to be `dev` and the prefix to be `dude-order-status` your AWS lambda, IAM roles, Genesys Cloud integration and data actions will all begin with `dev-dude-order-status`.
 * `prefix`- This a free-form field that combines with the environment value to define the name of various AWS and Genesys Cloud artifacts.
@@ -150,11 +148,11 @@ You are now ready to run this blueprint solution for your organization.
 
 1. Change to the blueprints/terraform folder and issue these commands:
 
-* `terraform plan` - This executes a trial run against your Genesys Cloud organization and shows you a list of all the AWS, and Genesys Cloud resources created. Review this list and make sure you are comfortable with the activity being undertake before continuing to the second step.
+* `terraform plan` - This executes a trial run against your Genesys Cloud organization and shows you a list of all the AWS, and Genesys Cloud resources created. Review this list and make sure you are comfortable with the activity being undertaken before continuing.
 
-* `terraform apply --auto-approve` - This does the actual object creation and deployment against your AWS and Genesys Cloud accounts. The --auto--approve flag steps the approval step required before creating the objects.
+* `terraform apply --auto-approve` - This does the actual object creation and deployment against your AWS and Genesys Cloud accounts. After the --auto--approve commands complete, you should see the approval step required before creating the objects.
 
-After the `terraform apply --auto-approve` command has completed, you should see the output of the entire run along with the number of objects successfully created by Terraform. Keep these points in mind:
+After the `terraform apply --auto-approve` command completes, you should see the output of the entire run along with the number of objects successfully created by Terraform. Keep these points in mind:
 
 *  This project assumes you are running using a local Terraform backing state. This means that the `tfstate` files will be created in the same folder where you ran the project. Terraform does not recommend using local Terraform backing state files unless you run from a desktop and are comfortable with the deleted files.
 
@@ -166,9 +164,9 @@ After the Web messaging widget is deployed to your environment, use the Genesys 
 
 ![Test your deployed web messaging widget](images/webmessaging-start.png "Test your deployed web messaging widget")
 
-You can start your Web messaging chat session.
+Start the web messaging session.
 
-![Starting the Web Messaging session](images/webmessaging-inprogress.png "Starting the Web Messaging session")
+![Starting the web messaging session](images/webmessaging-inprogress.png "Starting the web messaging session")
 
 1. Go to the [Web developer tool](https://developer.genesys.cloud/developer-tools/) in the Genesys Cloud Developer Center. 
 2. Select a queue. This is a requirement of the Web Messaging developer tool.
@@ -184,10 +182,10 @@ If you receive a message from a chatbot that there was a problem with your order
 
 ## Additional resources
 
-* [Genesys Cloud Web messaging and Messenger](https://developer.genesys.cloud/commdigital/digital/webmessaging/ "Goes to the Web messaging and Messenger page") in the Genesys Cloud Developer Center.
-* [Genesys Cloud About the data actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the About the data actions integrations article") in the Genesys Cloud Resource Center.
-* [Genesys Cloud About the AWS Lambda data actions integration](https://help.mypurecloud.com/articles/about-the-aws-lambda-data-actions-integration/ "Opens the About the AWS Lambda data actions integration article") in the Genesys Cloud Resource Center.
-* [Terraform Registry Documentation](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs "Opens the Genesys Cloud provider page") in the Terraform documentation.
-* [Genesys Cloud DevOps Repository](https://github.com/GenesysCloudDevOps "Goes to the Genesys Cloud DevOps repository page") in GitHub. 
-* [deploy-webmessaging-chatbot-with-lambda-blueprint repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Goes to the deploy-webmessaging-chatbot-with-lambda-blueprint repository") in Github.
+* [Genesys Cloud Web messaging and Messenger](https://developer.genesys.cloud/commdigital/digital/webmessaging/ "Goes to the Web messaging and Messenger page") in the Genesys Cloud Developer Center
+* [Genesys Cloud About the data actions integrations](https://help.mypurecloud.com/?p=209478 "Opens the About the data actions integrations article") in the Genesys Cloud Resource Center
+* [Genesys Cloud About the AWS Lambda data actions integration](https://help.mypurecloud.com/?p=178553 "Opens the About the AWS Lambda data actions integration article") in the Genesys Cloud Resource Center
+* [Terraform Registry Documentation](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs "Opens the Genesys Cloud Terraform provider page") in the Terraform documentation
+* [Genesys Cloud DevOps Repository](https://github.com/GenesysCloudDevOps "Goes to the Genesys Cloud DevOps repository page") in GitHub
+* [deploy-webmessaging-chatbot-with-lambda-blueprint repository](https://github.com/GenesysCloudBlueprints/deploy-webmessaging-chatbot-with-lambda-blueprint "Goes to the deploy-webmessaging-chatbot-with-lambda-blueprint repository") in Github
 
