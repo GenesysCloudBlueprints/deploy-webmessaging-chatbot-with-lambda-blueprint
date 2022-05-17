@@ -6,7 +6,7 @@ icon: blueprint
 image: images/overview.png
 category: 5
 summary: |
-This Genesys Cloud Developer Blueprint demonstrates how to build a chat bot that uses Genesys Cloud's web messaging capabilities. This blueprint also demonstrates how to set up and configure a data action that invokes an AWS Lambda.
+  This Genesys Cloud Developer Blueprint demonstrates how to build a chat bot that uses Genesys Cloud's web messaging capabilities. This blueprint also demonstrates how to set up and configure a data action that invokes an AWS Lambda.
 ---
 
 This Genesys Cloud Developer Blueprint demonstrates how to build a chat bot that uses Genesys Cloud's web messaging capabilities. This blueprint also demonstrates how to set up and configure a data action that invokes an AWS Lambda.
