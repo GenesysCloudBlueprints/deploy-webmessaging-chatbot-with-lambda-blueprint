@@ -1,8 +1,8 @@
 inboundShortMessage:
-  name: DudeWheresMyStuffMessage
+  name: "{{flow_name}}"
   description: Message Based Chat Flow
   startUpRef: "/inboundShortMessage/states/state[Initial State_10]"
-  defaultLanguage: en-us
+  defaultLanguage: "{{default_language}}"
   supportedLanguages:
     en-us:
       defaultLanguageSkill:

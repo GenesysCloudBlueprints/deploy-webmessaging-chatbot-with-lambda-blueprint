@@ -1,7 +1,7 @@
 botFlow:
-  name: DudesWheresMyStuffBot
+  name: "{{flow_name}}"
   startUpRef: "/botFlow/bots/bot[WheresMyStuffBot_10]"
-  defaultLanguage: en-us
+  defaultLanguage: "{{default_language}}"
   supportedLanguages:
     en-us:
       none: true
