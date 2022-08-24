@@ -37,7 +37,6 @@ Additionally, this blueprint explains how to deploy the AWS Lambda, all the AWS 
 ## Solution components
 
 * **Genesys Cloud CX** - A suite of Genesys Cloud services for enterprise-grade communications, collaboration, and contact center management. In this solution, you use an Architect bot, Architect message flow, a Genesys Cloud integration, data action, queues, and a web messaging widget.
-* **Archy** - A Genesys Cloud command-line tool for importing and exporting Architect flows.
 * **CX as Code** - A Genesys Cloud Terraform provider that provides an interface for declaring core Genesys Cloud objects.
 * **AWS Terraform Provider** - An Amazon-supported Terrform provider that provides an interface for declaring Amazon Web Services infrastructure resources.
 * **AWS Lambda** - A serverless computing service for running code without creating or maintaining the underlying infrastructure. In this solution, AWS Lambda looks up a customer's order status.
@@ -54,7 +53,8 @@ For more information, see [Optionally update the AWS Lambda](#optionally-update-
 
 This will build a Linux executable called `main` in the `bin` directory. The CX as Code/Terraform scripts compresses the executable and deploys the zip as part of the AWS Lambda deploy via Terraform.
 
-:::**NOTE**: The executable only runs on Linux. Golang allows the developer to build Linux executables on Windows and OS/X, but they will not be able to run them locally.
+:::primary
+**NOTE**: The executable only runs on Linux. Golang allows the developer to build Linux executables on Windows and OS/X, but they will not be able to run them locally.
 :::
 
 ## Prerequisites
@@ -69,7 +69,6 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 
 * A Genesys Cloud license. For more information see, [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") in the Genesys website. 
 * Master Admin role. For more information see, [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Goes to the Roles and permissions overview article") in the Genesys Cloud Resource Center.
-* Archy. For more information see, [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page") in the Genesys Cloud Developer Center.
 * CX as Code. For more information see, [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Goes to the CX as Code page") in the Genesys Cloud Developer Center.
 
 ### AWS account
@@ -82,13 +81,7 @@ This will build a Linux executable called `main` in the `bin` directory. The CX 
 ### Development tools running in your local environment
 
 * Terraform (the latest binary). For more information, see [Download Terraform](https://www.terraform.io/downloads.html "Goes to the Download Terraform page") on the Terraform website.
-* Golang 1.16 or higher. For more information, see [Downloads](https://go.dev/dl/ "Goes to the Downloads page") on the Go website. 
-* Archy (the latest version). Archy is Genesys Cloud's command line to deploy Genesys Cloud Architect flows. For more information, see: 
-
-  * [Archy Documentation](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page")
-  * [Installing and Configuring Archy - Video](https://www.youtube.com/watch?v=fOI_vq3PnM8 "Goes to the DevDrop 8a: Installing and configuring Archy video") in YouTube
-  * [Exporting flows with Archy - Video](https://www.youtube.com/watch?v=QAmkM_agsrY "Goes to the DevDrop 8b: Exporting flows with Archy video") in YouTube
-  * [Importing flows with Archy - Video](https://www.youtube.com/watch?v=3NwGJ9X1O0s "Goes to the DevDrop 8c: Importing an Architect flow using Archy video") in YouTube
+* Golang 1.16 or higher. For more information, see [Downloads](https://go.dev/dl/ "Goes to the Downloads page") on the Go website.
 
 ## Implementation steps
 
