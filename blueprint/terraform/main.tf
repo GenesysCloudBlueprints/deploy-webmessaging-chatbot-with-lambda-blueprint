@@ -51,6 +51,8 @@ module "dude_queues" {
 */
 module "my_chat_flow" {
   source      = "./modules/flows"
+  integration_category = module.lambda_data_action.integration_data_action_category
+  integration_data_action_name = module.lambda_data_action.integration_data_action_name
 }
 
 /*   

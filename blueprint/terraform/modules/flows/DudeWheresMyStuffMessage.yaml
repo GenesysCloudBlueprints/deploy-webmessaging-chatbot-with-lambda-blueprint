@@ -97,9 +97,9 @@ inboundShortMessage:
                                 lit:
                                   minutes: 1
                               category:
-                                ${integration_category}:
+                                {{integration_category}}:
                                   dataAction:
-                                    ${integration_data_action_name}:
+                                    {{integration_data_action_name}}:
                                       inputs:
                                         OrderNumber:
                                           exp: State.OrderNumber
