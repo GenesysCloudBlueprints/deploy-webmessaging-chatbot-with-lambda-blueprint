@@ -3,7 +3,8 @@ locals {
 }
 
 locals {
-  go_runtime     = "go1.x"
+  go_runtime     = "provided.al2"
+  architectures  = ["arm64"]
   lambda_timeout = 10
 }
 
